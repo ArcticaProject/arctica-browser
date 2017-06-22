@@ -1,0 +1,58 @@
+NAME
+    Arctica::Browser::Overlay - Core Perl modules for the Arctica Framework
+
+SYNOPSIS
+      use Arctica::Browser::Overlay;
+
+      <usage-example-code>
+
+DESCRIPTION
+
+    <Introduction text>
+
+  Package Variables
+
+    <Some overall explanation>
+
+    $Arctica::Browser::Overlay::<var1>
+        <Explanation on var1>.
+
+    $Arctica::Browser::Overlay::<var2>
+        <Explanation on var2>.
+
+  Class Methods
+
+    <method-name-1>
+
+        This method does ....
+
+    <method-name-1>
+
+        This method does ....
+
+  Instance Methods
+
+    <method-name-1>
+
+        This method does ....
+
+    <method-name-1>
+
+        This method does ....
+
+  Overloaded Operators
+
+    <overloaded-operator-1>
+
+        Explanation on this...
+
+SEE ALSO
+    Arctica::Telekinesis::Server, Arctica::Telekinesis::Client, perl
+
+AUTHOR
+    AUTHOR_FULLNAME <AUTHOR_MAILADDRESS>
+
+COPYRIGHT
+      Copyright (c) 2015-2017 Arctica Project.  All rights reserved.
+      This module is free software; you can redistribute it and/or modify it
+      under the same terms of the <LICENSE> license.
