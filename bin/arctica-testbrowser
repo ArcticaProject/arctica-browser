@@ -73,7 +73,7 @@ sub LoadCSS {
 		background-color: #000000;
 		background-repeat: no-repeat;
 		background-position: center;
-		background-image: url('/tekitest/eyesore_t.png');
+		background-image: url('/usr/share/arctica-testbrowser/eyesore_t.png');
 	}"]);
 
 	Gtk3::StyleContext::add_provider_for_screen( $Screen, $Gtk3_CSS_Provider, Gtk3::STYLE_PROVIDER_PRIORITY_USER);
