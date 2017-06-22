@@ -1,0 +1,80 @@
+#!/usr/bin/perl -X -T
+
+use strict;
+use Data::Dumper;
+use Arctica::Core::eventInit qw(genARandom BugOUT);
+use Arctica::Telekinesis::Application::Gtk3;
+my $ACO = Arctica::Core::eventInit->new({
+	app_name=>'telekinesis-test-app',
+	app_class =>'tekiapp',
+	app_version=>'0.0.1.1'});
+
+
+
+my $TeKiGtk3 = Arctica::Telekinesis::Application::Gtk3->new($ACO,{
+		services => {
+			multimedia => {
+				conf => {
+					files_only => 1,
+				},
+			},
+		},
+	});
+
+LoadCSS();
+my $main_window = Gtk3::Window->new('toplevel');
+$main_window->signal_connect(destroy => sub {Gtk3->main_quit();});
+$main_window->set_title('TEST WINDOW');
+
+my $window_id = $TeKiGtk3->add_window($main_window);
+my $target_id = $TeKiGtk3->new_target($window_id,"multimedia");
+$TeKiGtk3->{'targets'}{$target_id}{'tmplnkid'} = "null";#TMP GARBAGE
+
+
+my $vBox = Gtk3::Box->new( 'vertical', 0 );
+$main_window->add($vBox);
+$vBox->show();
+
+
+$vBox->pack_start($TeKiGtk3->get_widget($target_id), 1, 1, 0 );
+
+
+$main_window->set_border_width(0);
+$main_window->resize(1024,600);
+$main_window->show_all();
+
+# We'll wan't to start this within the AppGtk3 thingie... but for now it can stay out here...
+my $timeout = Glib::Timeout->add(50, sub {$TeKiGtk3->check_n_send();return 1;});
+my $timeout2 = Glib::Timeout->add(900, sub {
+	my ($os_x,$os_y) = $main_window->get_position;
+	my $x = ($os_x+1);
+	my $y = ($os_y+1);
+	$main_window->move($x,$y);
+	return 0;
+});
+my $timeout3 = Glib::Timeout->add(1000, sub {
+	my ($os_x,$os_y) = $main_window->get_position;
+
+	my $x = ($os_x-1);
+	my $y = ($os_y-1);
+	$main_window->move($x,$y);
+
+	return 0;
+});
+
+$ACO->{'Glib'}{'MainLoop'}->run;
+
+
+sub LoadCSS {
+	my $Gtk3_CSS_Provider = Gtk3::CssProvider->new;
+	my $Display = Gtk3::Gdk::Display::get_default();
+	my $Screen = $Display->get_default_screen;
+	$Gtk3_CSS_Provider->load_from_data ([map ord, split //,"GtkSocket{
+		background-color: #000000;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-image: url('/tekitest/eyesore_t.png'); 
+	}"]);
+	
+	Gtk3::StyleContext::add_provider_for_screen( $Screen, $Gtk3_CSS_Provider, Gtk3::STYLE_PROVIDER_PRIORITY_USER);
+}
