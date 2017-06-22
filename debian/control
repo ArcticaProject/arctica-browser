@@ -1,0 +1,45 @@
+Source: libarctica-browser-overlay-perl
+Section: perl
+Priority: optional
+Build-Depends:
+ cdbs,
+ debhelper (>= 9),
+Build-Depends-Indep:
+ perl (>= 5.8.0),
+Maintainer: Arctica Project Developers <devs@lists.arctica-project.org>
+Uploaders:
+ Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Homepage: https://arctica-project.org/
+Vcs-Git: https://github.com/ArcticaProject/perl-Arctica-Browser-Overlay
+Vcs-Browser: https://github.com/ArcticaProject/perl-Arctica-Browser-Overlay
+Standards-Version: 3.9.8
+
+Package: libarctica-browser-overlay-perl
+Architecture: all
+Depends:
+ ${perl:Depends},
+ ${misc:Depends},
+Description: Arctica Browser
+ The Arctica Project brings forth a remote computing framework of
+ enterprise grade and quality. The Arctica Framework is a highly
+ modularized and thus pluggable for developing alls sort of remote
+ services.
+ .
+ This package provides all Perl modules needed for the client-side
+ Arctica Web Browser Overlay.
+
+Package: arctica-testbrowser
+Architecture: all
+Depends:
+ ${perl:Depends},
+ ${misc:Depends},
+ libarctica-services-audio-server-pulseaudio-perl (= ${binary:Version}),
+ libarctica-services-audio-streamer-pulseaudio2gst-perl,
+Description: Arctica Service: Audio::Server::PulseAudio (test server)
+ The Arctica Project brings forth a remote computing framework of
+ enterprise grade and quality. The Arctica Framework is a highly
+ modularized and thus pluggable for developing alls sort of remote
+ services.
+ .
+ This package provides a standalone to-be-installed server-side test
+ browser that launches its web overlay on the client-side.
