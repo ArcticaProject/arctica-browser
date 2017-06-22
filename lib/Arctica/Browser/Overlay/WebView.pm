@@ -118,7 +118,7 @@ sub _gen_webview_main {
 
 	$self->{'_gtk'}{'webview'}{'bottom_overlay_text'} = Gtk3::Label->new();
 	$self->{'_gtk'}{'webview'}{'bottom_overlay_text'}->set_halign('start');
-	$self->{'_gtk'}{'webview'}{'bottom_overlay_text'}->set_valign('end');	
+	$self->{'_gtk'}{'webview'}{'bottom_overlay_text'}->set_valign('end');
 	$self->{'_gtk'}{'webview'}{'main_container'}->add_overlay($self->{'_gtk'}{'webview'}{'bottom_overlay_text'});
 
 
@@ -145,7 +145,7 @@ sub ext_sigfunc {
 		$self->{'_gtk'}{'webview'}{'thewebview'}->go_back;
 	} elsif ($func eq "history_forward") {
 		$self->{'_gtk'}{'webview'}{'thewebview'}->go_forward;
-	} 
+	}
 }
 
 sub _sigfunc_webview_notify_load_status {
@@ -168,7 +168,7 @@ sub _sigfunc_webview_notify_progress {
 	my $progress = $self->{'_gtk'}{'webview'}{'thewebview'}->get('progress');
 	if ($progress) {
 		$self->{'toolbar'}->ext_sigfunc('load_progress',sprintf("%.2f", $progress));
-	} 
+	}
 }
 
 sub _sigfunc_webview_hover_over_link {

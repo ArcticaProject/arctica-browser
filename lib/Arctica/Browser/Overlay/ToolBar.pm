@@ -128,11 +128,11 @@ sub _gen_history_buttons {
 	my $the_toolbar = $_[1];
 	$self->{'_gtk'}{'history'}{'btn_back'} = Gtk3::ToolButton->new_from_stock('gtk-go-back');
 	$self->{'_gtk'}{'history'}{'btn_back'}->signal_connect( "clicked" => sub {$self->_sigfunc_history_back;}, undef );
-	$the_toolbar->insert($self->{'_gtk'}{'history'}{'btn_back'}, -1);  
+	$the_toolbar->insert($self->{'_gtk'}{'history'}{'btn_back'}, -1);
 
 	$self->{'_gtk'}{'history'}{'btn_forward'} = Gtk3::ToolButton->new_from_stock('gtk-go-forward');
 	$self->{'_gtk'}{'history'}{'btn_forward'}->signal_connect( "clicked" => sub {$self->_sigfunc_history_forward;}, undef );
-	$the_toolbar->insert($self->{'_gtk'}{'history'}{'btn_forward'}, -1); 
+	$the_toolbar->insert($self->{'_gtk'}{'history'}{'btn_forward'}, -1);
 }
 
 sub ext_sigfunc {
@@ -190,7 +190,7 @@ sub _sigfunc_url_entry_icon_press {
 			if ($self->{'webview'}) {
 				$self->{'webview'}->ext_sigfunc('reload');
 			}
-		} 
+		}
 	}
 }
 
@@ -200,7 +200,7 @@ sub _sigfunc_url_entry_activate {
  		my $uri = $self->{'_gtk'}{'urlentry'}{'url_entry'}->get_text;
 		unless ($uri =~ /^[a-z]*\:\/\/.*/) {# do better URL validation here!
 			$uri = "http://$uri";
-		} 
+		}
 		$self->{'webview'}->ext_sigfunc('load_uri',$uri);
 	} else {
 		warn("No WebView attached to this toolbar?");

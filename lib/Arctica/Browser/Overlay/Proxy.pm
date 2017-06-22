@@ -95,7 +95,7 @@ sub _set_proxy {
 	$ENV{'http_proxy'} = $proxy_string;
 	$ENV{'HTTPS_PROXY'} = $proxy_string;
 	$ENV{'https_proxy'} = $proxy_string;
-	
+
 }
 
 

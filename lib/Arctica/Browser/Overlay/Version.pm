@@ -13,7 +13,7 @@
 #
 ################################################################################
 #
-# Copyright (C) 2015-2016 The Arctica Project 
+# Copyright (C) 2015-2016 The Arctica Project
 # http://http://arctica-project.org/
 #
 # This code is dual licensed: strictly GPL-2 or AGPL-3+
