@@ -25,6 +25,8 @@ Depends:
  libgtk3-perl,
  libgtk3-webkit-perl,
  libglib-object-introspection-perl,
+ x11-utils,
+ xdotool,
 Description: Arctica Browser
  The Arctica Project brings forth a remote computing framework of
  enterprise grade and quality. The Arctica Framework is a highly
