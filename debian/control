@@ -42,6 +42,7 @@ Depends:
  ${perl:Depends},
  ${misc:Depends},
  libarctica-telekinesis-application-gtk3-perl,
+ tinyproxy,
 Description: Arctica Browser (test browser)
  The Arctica Project brings forth a remote computing framework of
  enterprise grade and quality. The Arctica Framework is a highly
