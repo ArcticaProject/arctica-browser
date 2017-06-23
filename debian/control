@@ -27,7 +27,7 @@ Depends:
  libglib-object-introspection-perl,
  x11-utils,
  xdotool,
-Description: Arctica Browser
+Description: Arctica Browser (client-side overlay)
  The Arctica Project brings forth a remote computing framework of
  enterprise grade and quality. The Arctica Framework is a highly
  modularized and thus pluggable for developing alls sort of remote
@@ -42,7 +42,7 @@ Depends:
  ${perl:Depends},
  ${misc:Depends},
  libarctica-telekinesis-application-gtk3-perl,
-Description: Arctica Service: Audio::Browser::Overlay (test browser)
+Description: Arctica Browser (test browser)
  The Arctica Project brings forth a remote computing framework of
  enterprise grade and quality. The Arctica Framework is a highly
  modularized and thus pluggable for developing alls sort of remote
