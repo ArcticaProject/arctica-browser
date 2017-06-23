@@ -33,7 +33,7 @@ Architecture: all
 Depends:
  ${perl:Depends},
  ${misc:Depends},
- libarctica-telekinesis-application-gtk3,
+ libarctica-telekinesis-application-gtk3-perl,
 Description: Arctica Service: Audio::Browser::Overlay (test browser)
  The Arctica Project brings forth a remote computing framework of
  enterprise grade and quality. The Arctica Framework is a highly
