@@ -40,7 +40,7 @@ $vBox->pack_start($TeKiGtk3->get_widget($target_id), 1, 1, 0 );
 
 
 $main_window->set_border_width(0);
-$main_window->resize(1024,600);
+$main_window->resize(640,480);
 $main_window->show_all();
 
 # We'll wan't to start this within the AppGtk3 thingie... but for now it can stay out here...
