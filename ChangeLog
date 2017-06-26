@@ -1,0 +1,83 @@
+2017-06-26 21:22:20 +0200 Mike Gabriel (8bcb92f)
+
+	* lib/Arctica/Browser/Overlay/WebView.pm: Let's be political correct
+          with our draft, hard-code duckduckgo.com as start page.
+          (HEAD -> master, origin/master, gh-arctica/master)
+
+2017-06-26 21:21:18 +0200 Mike Gabriel (53378f5)
+
+	* arctica-testbrowser: Start with lower resolution to not freak out
+          the overlay for now.
+
+2017-06-23 18:14:16 +0200 Mike Gabriel (f35a622)
+
+	* debian/control: Add D (arctica-testbrowser): tinyproxy (for
+          now...).
+
+2017-06-23 17:40:42 +0200 Mike Gabriel (f0d2344)
+
+	* debian/control: Fix SYNOPSIS fields.
+
+2017-06-23 17:40:18 +0200 Mike Gabriel (34472dc)
+
+	* debian/control: Add Ds (libarctica-browser-overlay-perl):
+          x11-utils, xdotool.
+
+2017-06-23 17:14:39 +0200 Mike Gabriel (2523b78)
+
+	* debian/arctica-testbrowser.install: Fix flawed installation path of
+          arctica-testbrowser.
+
+2017-06-23 14:17:45 +0200 Mike Gabriel (ec6a8ae)
+
+	* debian/control: Add Ds (libarctica-browser-overlay-perl):
+          libarctica-core-perl, libarctica-core-jabus-socket-perl,
+          libglib-perl, libgtk3-perl, libgtk3-webkit-perl,
+          libglib-object-introspection-perl.
+
+2017-06-23 14:16:59 +0200 Mike Gabriel (b1e7f05)
+
+	* debian/control: Fix D (arctica-testbrowser):
+          libarctica-telekinesis-application-gtk3 ->
+          libarctica-telekinesis-application-gtk3-perl.
+
+2017-06-23 00:31:32 +0200 Mike Gabriel (40ed4f2)
+
+	* bin/forkedmmoverlay.pl: Add script to
+          libarctica-browser-overlay-perl package.
+
+2017-06-23 00:19:37 +0200 Mike Gabriel (ef6b5c7)
+
+	* debian/control: Fix Ds, we only need
+          libarctica-telekinesis-application-gtk3. Fix SYNOPSIS for
+          arctica-testbrowser.
+
+2017-06-23 00:05:06 +0200 Mike Gabriel (cd4ec9b)
+
+	* Include eyesore_t.png in project for arctica-testbrowser.
+
+2017-06-22 23:19:10 +0200 Mike Gabriel (707e685)
+
+	* whitespace cleanup
+
+2017-06-22 23:17:53 +0200 Mike Gabriel (9e326c3)
+
+	* debian/arctica-testbrowser.install: Install test browser to
+          /usr/bin.
+
+2017-06-22 23:17:25 +0200 GZNGET FOSS Team (4d72611)
+
+	* Add arctica-testbrowser.
+
+2017-06-22 23:07:53 +0200 Mike Gabriel (1f440be)
+
+	* Debianize this project.
+
+2017-06-22 22:45:30 +0200 Mike Gabriel (6c0cb6c)
+
+	* add missing files for this to become a proper Perl upstream project
+
+2017-06-22 22:43:11 +0200 GZNGET FOSS Team (985c827)
+
+	* initial commit, development state dating 20170619.
+
