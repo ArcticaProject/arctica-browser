@@ -111,7 +111,7 @@ sub _gen_webview_main {
 	$self->{'_gtk'}{'webview'}{'main_container'} = Gtk3::Overlay->new();
 
 	$self->{'_gtk'}{'webview'}{'thewebview'} = Gtk3::WebKit::WebView->new();
-	$self->{'_gtk'}{'webview'}{'thewebview'}->load_uri("http://bing.com/");#
+	$self->{'_gtk'}{'webview'}{'thewebview'}->load_uri("http://duckduckgo.com/");#
 	$self->{'_gtk'}{'webview'}{'scroller'} = Gtk3::ScrolledWindow->new();
 	$self->{'_gtk'}{'webview'}{'scroller'}->add($self->{'_gtk'}{'webview'}{'thewebview'});
 	$self->{'_gtk'}{'webview'}{'main_container'}->add($self->{'_gtk'}{'webview'}{'scroller'});
