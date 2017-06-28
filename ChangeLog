@@ -1,8 +1,30 @@
+2017-06-28 13:46:33 +0200 Mike Gabriel (41d17ce)
+
+	* release 0.0.0.2 (HEAD -> master)
+
+2017-06-28 13:45:38 +0200 Mike Gabriel (987eda9)
+
+	* release 0.0.0.2
+
+2017-06-28 13:43:39 +0200 Mike Gabriel (55c6358)
+
+	* bin/*: Add license headers.
+
+2017-06-28 13:35:23 +0200 Mike Gabriel (8b6be3d)
+
+	* Turn project from perl-Arctica-Browser-Overlay into
+          arctica-browser.
+
+2017-06-26 21:58:51 +0200 Mike Gabriel (eb84fe4)
+
+	* release 0.0.0.1 (tag: 0.0.0.1, origin/master,
+          gh-arctica/release-builds, gh-arctica/master,
+          release-builds)
+
 2017-06-26 21:22:20 +0200 Mike Gabriel (8bcb92f)
 
 	* lib/Arctica/Browser/Overlay/WebView.pm: Let's be political correct
           with our draft, hard-code duckduckgo.com as start page.
-          (HEAD -> master, origin/master, gh-arctica/master)
 
 2017-06-26 21:21:18 +0200 Mike Gabriel (53378f5)
 
