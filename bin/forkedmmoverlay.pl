@@ -10,16 +10,16 @@ use Glib;
 use Glib::Object::Introspection;
 use Glib qw(TRUE FALSE);
 
-use Arctica::Browser::Overlay::ToolBar;
-use Arctica::Browser::Overlay::WebView;
-use Arctica::Browser::Overlay::Proxy;
+use Arctica::Browser::ToolBar;
+use Arctica::Browser::WebView;
+use Arctica::Browser::Proxy;
 
 Glib::Object::Introspection->setup(
 	basename => "GdkX11",
 	version => "3.0",
 	package => "Gtk3::Gdk");
 
-my $proxy = Arctica::Browser::Overlay::Proxy->new;
+my $proxy = Arctica::Browser::Proxy->new;
 
 my $gnx_xid = `/usr/bin/xwininfo -root -all|/bin/grep NXAgent`;
 if ($gnx_xid =~ /^\s*(0x[0-9a-f]*)\s.*/) {
@@ -78,8 +78,8 @@ $window->set_default_size(80, 60);
 $window->set_title('Browser');
 $window->signal_connect(destroy => sub { Gtk3->main_quit() });
 
-my $toolbar = Arctica::Browser::Overlay::ToolBar->new;
-my $webview = Arctica::Browser::Overlay::WebView->new($toolbar);
+my $toolbar = Arctica::Browser::ToolBar->new;
+my $webview = Arctica::Browser::WebView->new($toolbar);
 
 my $vbox = Gtk3::Box->new( 'vertical', 0);
 $vbox->set_border_width(0);

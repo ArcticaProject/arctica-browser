@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: perl-Arctica-Browser-Overlay
+Upstream-Name: Arctica Web Browser
 Upstream-Contact: Arctica Project Developers <devs@lists.arctica-project.org>
-Source: https://github.com/ArcticaProject/perl-Arctica-Browser-Overlay
+Source: https://github.com/ArcticaProject/arctica-browser
 
 Files: *
 Copyright:

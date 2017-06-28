@@ -1,4 +1,4 @@
-Source: libarctica-browser-overlay-perl
+Source: arctica-browser
 Section: perl
 Priority: optional
 Build-Depends:
@@ -10,44 +10,62 @@ Maintainer: Arctica Project Developers <devs@lists.arctica-project.org>
 Uploaders:
  Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 Homepage: https://arctica-project.org/
-Vcs-Git: https://github.com/ArcticaProject/perl-Arctica-Browser-Overlay
-Vcs-Browser: https://github.com/ArcticaProject/perl-Arctica-Browser-Overlay
+Vcs-Git: https://github.com/ArcticaProject/arctica-browser
+Vcs-Browser: https://github.com/ArcticaProject/arctica-browser
 Standards-Version: 3.9.8
 
-Package: libarctica-browser-overlay-perl
-Architecture: all
-Depends:
- ${perl:Depends},
- ${misc:Depends},
- libarctica-core-perl,
- libarctica-core-jabus-socket-perl,
- libglib-perl,
- libgtk3-perl,
- libgtk3-webkit-perl,
- libglib-object-introspection-perl,
- x11-utils,
- xdotool,
-Description: Arctica Browser (client-side overlay)
- The Arctica Project brings forth a remote computing framework of
- enterprise grade and quality. The Arctica Framework is a highly
- modularized and thus pluggable for developing alls sort of remote
- services.
- .
- This package provides all Perl modules needed for the client-side
- Arctica Web Browser Overlay.
-
-Package: arctica-testbrowser
+Package: libarctica-browser-core-perl
 Architecture: all
 Depends:
  ${perl:Depends},
  ${misc:Depends},
  libarctica-telekinesis-application-gtk3-perl,
- tinyproxy,
-Description: Arctica Browser (test browser)
+Description: Arctica Web Browser: Core Module
  The Arctica Project brings forth a remote computing framework of
  enterprise grade and quality. The Arctica Framework is a highly
  modularized and thus pluggable for developing alls sort of remote
  services.
  .
- This package provides a standalone to-be-installed server-side test
- browser that launches its web overlay on the client-side.
+ This package provides the core Perl module of the Arctica Web Browser.
+
+Package: arctica-browser
+Architecture: all
+Depends:
+ ${perl:Depends},
+ ${misc:Depends},
+ libarctica-browser-core-perl (= ${source:Version}),
+ tinyproxy,
+Breaks: arctica-testbrowser,
+Replaces: arctica-testbrowser,
+Description: Arctica Web Browser
+ The Arctica Project brings forth a remote computing framework of
+ enterprise grade and quality. The Arctica Framework is a highly
+ modularized and thus pluggable for developing alls sort of remote
+ services.
+ .
+ This package provides the Arctica Web Browser.
+
+Package: arctica-browser-overlay
+Architecture: all
+Depends:
+ ${perl:Depends},
+ ${misc:Depends},
+ libarctica-browser-proxy-perl,
+ libarctica-browser-toolbar-perl,
+ libarctica-browser-webview-perl,
+ libarctica-core-perl,
+ libarctica-core-jabus-socket-perl,
+ libglib-perl,
+ libgtk3-perl,
+ libglib-object-introspection-perl,
+ x11-utils,
+ xdotool,
+Breaks: libarctica-browser-overlay-perl,
+Replaces: libarctica-browser-overlay-perl,
+Description: Arctica Web Browser: Client-Side Overlay
+ The Arctica Project brings forth a remote computing framework of
+ enterprise grade and quality. The Arctica Framework is a highly
+ modularized and thus pluggable for developing alls sort of remote
+ services.
+ .
+ This package provides the client-side overlay for Arctica Web Browser.

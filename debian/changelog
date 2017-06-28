@@ -1,3 +1,9 @@
+arctica-browser (0.0.0.2-1) UNRELEASED; urgency=medium
+
+  * Turn perl-Arctica-Browser-Overlay into actual Arctica Browser project.
+
+ -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de>  Wed, 28 Jun 2017 13:30:34 +0200
+
 libarctica-browser-overlay-perl (0.0.0.1-0) unstable; urgency=medium
 
   * No changelog entries here... See upstream ChangeLog file.

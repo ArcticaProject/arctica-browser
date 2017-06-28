@@ -1,0 +1,2 @@
+bin/arctica-browser usr/bin/
+data/* usr/share/arctica-browser/

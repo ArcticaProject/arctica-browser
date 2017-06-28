@@ -57,7 +57,7 @@
 # Copyright (C) 2015-2016 Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 #
 ################################################################################
-package Arctica::Browser::Overlay::Version;
+package Arctica::Browser::Core::Version;
 use strict;
 
 use vars qw[$VERSION];
