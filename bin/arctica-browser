@@ -58,10 +58,11 @@ use strict;
 use Data::Dumper;
 use Arctica::Core::eventInit qw(genARandom BugOUT);
 use Arctica::Telekinesis::Application::Gtk3;
+use Arctica::Browser::Core::Version;
 my $ACO = Arctica::Core::eventInit->new({
-	app_name=>'telekinesis-test-app',
+	app_name=>'arctica-browser',
 	app_class =>'tekiapp',
-	app_version=>'0.0.1.1'});
+	app_version=>Arctica::Browser::Core::Version::$VERSION});
 
 
 
