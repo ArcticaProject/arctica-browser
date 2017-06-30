@@ -62,7 +62,7 @@ Depends:
  xdotool,
 Breaks: libarctica-browser-overlay-perl,
 Replaces: libarctica-browser-overlay-perl,
-Description: Arctica Web Browser: Client-Side Overlay
+Description: Arctica Web Browser (client-side overlay)
  The Arctica Project brings forth a remote computing framework of
  enterprise grade and quality. The Arctica Framework is a highly
  modularized and thus pluggable for developing alls sort of remote
