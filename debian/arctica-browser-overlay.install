@@ -1,2 +1,1 @@
-# FIXME: this is far from suboptimal...
-bin/forkedmmoverlay.pl usr/bin/
+bin/arctica-browser-overlay usr/bin/
