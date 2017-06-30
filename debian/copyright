@@ -3,6 +3,12 @@ Upstream-Name: Arctica Web Browser
 Upstream-Contact: Arctica Project Developers <devs@lists.arctica-project.org>
 Source: https://github.com/ArcticaProject/arctica-browser
 
+Files: bin/arctica-browser
+Copyright:
+ 2015-2017, Guangzhou Nianguan Electronics Technology Co.Ltd. <opensource@gznianguan.com>
+ 2015-2017, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+License: AGPL-3+
+
 Files: *
 Copyright:
  2015-2017, Guangzhou Nianguan Electronics Technology Co.Ltd. <opensource@gznianguan.com>
