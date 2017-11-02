@@ -58,6 +58,8 @@ Depends:
  libglib-perl,
  libgtk3-perl,
  libglib-object-introspection-perl,
+ libx11-protocol-perl,
+ libx11-guitest-perl,
  x11-utils,
  xdotool,
 Breaks: libarctica-browser-overlay-perl,
