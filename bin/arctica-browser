@@ -1,5 +1,4 @@
 #!/usr/bin/perl -X -T
-
 ################################################################################
 #          _____ _
 #         |_   _| |_  ___
@@ -62,7 +61,7 @@ use Arctica::Browser::Core::Version;
 my $ACO = Arctica::Core::eventInit->new({
 	app_name=>'arctica-browser',
 	app_class =>'tekiapp',
-	app_version=>Arctica::Browser::Core::Version::$VERSION});
+	app_version=>1});
 
 
 
@@ -79,10 +78,10 @@ my $TeKiGtk3 = Arctica::Telekinesis::Application::Gtk3->new($ACO,{
 LoadCSS();
 my $main_window = Gtk3::Window->new('toplevel');
 $main_window->signal_connect(destroy => sub {Gtk3->main_quit();});
-$main_window->set_title('TEST WINDOW');
+$main_window->set_title('Arctica Browser');
 
 my $window_id = $TeKiGtk3->add_window($main_window);
-my $target_id = $TeKiGtk3->new_target($window_id,"multimedia");
+my $target_id = $TeKiGtk3->new_target($window_id,"webcontent");
 $TeKiGtk3->{'targets'}{$target_id}{'tmplnkid'} = "null";#TMP GARBAGE
 
 
@@ -107,7 +106,7 @@ my $timeout2 = Glib::Timeout->add(900, sub {
 	$main_window->move($x,$y);
 	return 0;
 });
-my $timeout3 = Glib::Timeout->add(1000, sub {
+my $timeout3 = Glib::Timeout->add(100, sub {
 	my ($os_x,$os_y) = $main_window->get_position;
 
 	my $x = ($os_x-1);
@@ -126,10 +125,7 @@ sub LoadCSS {
 	my $Screen = $Display->get_default_screen;
 	$Gtk3_CSS_Provider->load_from_data ([map ord, split //,"GtkSocket{
 		background-color: #000000;
-		background-repeat: no-repeat;
-		background-position: center;
-		background-image: url('/usr/share/arctica-browser/eyesore_t.png');
 	}"]);
-
+# background-repeat: no-repeat;background-position: center;background-image: url('/usr/share/arctica-browser/eyesore_t.png');
 	Gtk3::StyleContext::add_provider_for_screen( $Screen, $Gtk3_CSS_Provider, Gtk3::STYLE_PROVIDER_PRIORITY_USER);
 }

@@ -1,5 +1,4 @@
 #!/usr/bin/perl -X -T
-
 ################################################################################
 #          _____ _
 #         |_   _| |_  ___
@@ -59,7 +58,7 @@
 # Copyright (C) 2015-2016 Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 #
 ################################################################################
-
+# WARNING THIS IS A HYBRID BASTARD MIX (of 3 generations of AWB)
 use strict;
 use Data::Dumper;
 use Arctica::Core::eventInit qw(genARandom BugOUT);
@@ -74,18 +73,22 @@ use Arctica::Browser::ToolBar;
 use Arctica::Browser::WebView;
 use Arctica::Browser::Proxy;
 
+use X11::Protocol;
+use X11::GUITest qw(RaiseWindow SetInputFocus);
+my $X11 = X11::Protocol->new();
+
 Glib::Object::Introspection->setup(
 	basename => "GdkX11",
 	version => "3.0",
 	package => "Gtk3::Gdk");
 
-my $proxy = Arctica::Browser::Proxy->new;
-
-my $gnx_xid = `/usr/bin/xwininfo -root -all|/bin/grep NXAgent`;
-if ($gnx_xid =~ /^\s*(0x[0-9a-f]*)\s.*/) {
-        $gnx_xid = $1;
+my $proxy;#= Arctica::Browser::Proxy->new;
+my $gnx_xid;
+if ($ENV{'TEKINXWID'} =~ /^([\da-zA-Z]{4,})$/) {
+        $gnx_xid = hex $1;
+	BugOUT(8,"NX WID: $gnx_xid");
 } else {
-        die;
+        die("did not get the clientnxwid via ENV{'TEKINXWID'}");
 }
 
 
@@ -99,14 +102,19 @@ my $ACO = Arctica::Core::eventInit->new({
 my $app_id = @ARGV[0];
 my $ttid = @ARGV[1];
 my $sock_id;
-
+my $wizi = 0;
+my $wizy = 0;
+my $wizx = 0;
 if (@ARGV[2] =~ /^([a-zA-Z0-9]*)$/) {
 	$sock_id = $1;
 	BugOUT(8,"SOC:\t$sock_id");
 } else {die("YOU SOCK!");}
 
-
-
+my $rwid;
+if (@ARGV[4] =~ /^([a-zA-Z0-9\_\-]*)$/) {
+	 $rwid = $1;
+	warn("REAL WID: $rwid");	
+}
 
 my $TeKi = Arctica::Core::JABus::Socket->new($ACO,{
 	type	=>	"unix",
@@ -115,23 +123,20 @@ my $TeKi = Arctica::Core::JABus::Socket->new($ACO,{
 	connect_to => $sock_id,
 	handle_in_dispatch => {
 			chtstate => sub {\&chtargetstate(@_)},
-#			srvcneg => sub {$TeKiClient->c2s_service_neg(@_)},
-#			appctrl => \&teki_client2s_appctrl,
 	},
 	hooks => {
 		on_ready => sub {my_ready($app_id,$ttid);},
 		on_client_errhup => sub {die("\tLOST CONN!\n");},
 	},
+
 });
 
 my $timeout = Glib::Timeout->add(100, sub {
-#print "\tTime:\t",time,"\n\tLast:\t$lastcontact\n";
-	if ($lastcontact < (time-2)) {
+	if ($lastcontact < (time-1)) {
 		die("We're an orphan?");
 	}
 	return 1;
 });
-
 
 my $window = Gtk3::Window->new('popup');
 $window->set_default_size(80, 60);
@@ -148,11 +153,10 @@ $vbox->pack_start($webview->return_webview,TRUE,TRUE,0);
 $window->add($vbox);
 
 $window->show_all();
+$window->map();
 $window->unmap();
-
-system("/usr/bin/xdotool","windowreparent",$window->get_window->get_xid,$gnx_xid);
-
-
+my $overlaywinid = $window->get_window->get_xid;
+system("/usr/bin/xdotool","windowreparent",$overlaywinid,$gnx_xid);
 $ACO->{'Glib'}{'MainLoop'}->run;
 
 
@@ -162,7 +166,6 @@ sub chtargetstate {
 	warn(Dumper($data));
 	my $x = $data->{'apx'};
 	my $y = $data->{'apy'};
-#warn("CH:\t$x,$y\t$data->{'w'} * $data->{'h'}	[$data->{'alive'}]");
 
 	if ($data->{'w'} and $data->{'h'}) {
 		$window->resize($data->{'w'},$data->{'h'});
@@ -170,14 +173,32 @@ sub chtargetstate {
 	}
 
 	if ((defined $x) and (defined $y)) {
-		$window->move($x,$y);
+		
+		$wizx = $x;
+		$wizy = $y;
+		if ($data->{'visible'} eq 1) {
+			$window->move($wizx,$wizy);
+		}
 	}
 
 
 	if ($data->{'visible'} eq 1) {
+		if ($wizi ne 1) {
+
 			$window->map();
+			$window->move($wizx,$wizy);
+system("/usr/bin/xdotool","windowreparent",$window->get_window->get_xid,$gnx_xid);
+
+RaiseWindow($window->get_window->get_xid);
+SetInputFocus($window->get_window->get_xid);
+
+			$wizi = 1;
+		}
 	} else {
-		$window->unmap();
+$wizi = 0;
+			$window->move(0,0);
+system("/usr/bin/xdotool","windowreparent",$window->get_window->get_xid,$rwid);
+#		$window->unmap();
 	}
 }
 
@@ -190,6 +211,7 @@ sub my_ready {
 				ttid => $ttid,
 	});
 }
+
 
 sub daemonize {
 	fork and exit;
