@@ -61,7 +61,7 @@ use Arctica::Browser::Core::Version;
 my $ACO = Arctica::Core::eventInit->new({
 	app_name=>'arctica-browser',
 	app_class =>'tekiapp',
-	app_version=>Arctica::Browser::Core::Version::$VERSION});
+	app_version=>$Arctica::Browser::Core::Version::VERSION});
 
 
 my $TeKiGtk3 = Arctica::Telekinesis::Application::Gtk3->new($ACO,{
