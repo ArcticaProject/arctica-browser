@@ -113,7 +113,7 @@ if (@ARGV[2] =~ /^([a-zA-Z0-9]*)$/) {
 my $rwid;
 if (@ARGV[4] =~ /^([a-zA-Z0-9\_\-]*)$/) {
 	 $rwid = $1;
-	warn("REAL WID: $rwid");	
+	warn("REAL WID: $rwid");
 }
 
 my $TeKi = Arctica::Core::JABus::Socket->new($ACO,{
@@ -173,7 +173,7 @@ sub chtargetstate {
 	}
 
 	if ((defined $x) and (defined $y)) {
-		
+
 		$wizx = $x;
 		$wizy = $y;
 		if ($data->{'visible'} eq 1) {
