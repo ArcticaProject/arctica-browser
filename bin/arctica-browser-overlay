@@ -91,6 +91,9 @@ if ($ENV{'TEKINXWID'} =~ /^([\da-zA-Z]{4,})$/) {
         die("did not get the clientnxwid via ENV{'TEKINXWID'}");
 }
 
+unless (-x "/usr/bin/xdotool") {
+        die("Are we missing xdotool '/usr/bin/xdotool'?");
+}
 
 my $lastcontact = (time + 5);
 
