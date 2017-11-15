@@ -82,17 +82,17 @@ Glib::Object::Introspection->setup(
 	version => "3.0",
 	package => "Gtk3::Gdk");
 
-my $proxy;#= Arctica::Browser::Proxy->new;
+my $proxy = Arctica::Browser::Proxy->new;
 my $gnx_xid;
 if ($ENV{'TEKINXWID'} =~ /^([\da-zA-Z]{4,})$/) {
         $gnx_xid = hex $1;
 	BugOUT(8,"NX WID: $gnx_xid");
 } else {
-        die("did not get the clientnxwid via ENV{'TEKINXWID'}");
+        BugOUT(0,"did not get the clientnxwid via ENV{'TEKINXWID'}");
 }
 
 unless (-x "/usr/bin/xdotool") {
-        die("Are we missing xdotool '/usr/bin/xdotool'?");
+        BugOUT(0,"Are we missing xdotool '/usr/bin/xdotool'?");
 }
 
 my $lastcontact = (time + 5);
@@ -111,7 +111,7 @@ my $wizx = 0;
 if (@ARGV[2] =~ /^([a-zA-Z0-9]*)$/) {
 	$sock_id = $1;
 	BugOUT(8,"SOC:\t$sock_id");
-} else {die("YOU SOCK!");}
+} else {BugOUT(0,"YOU SOCK!");}
 
 my $rwid;
 if (@ARGV[4] =~ /^([a-zA-Z0-9\_\-]*)$/) {
@@ -129,14 +129,14 @@ my $TeKi = Arctica::Core::JABus::Socket->new($ACO,{
 	},
 	hooks => {
 		on_ready => sub {my_ready($app_id,$ttid);},
-		on_client_errhup => sub {die("\tLOST CONN!\n");},
+		on_client_errhup => sub {BugOUT(0,"\tLOST CONN!\n");},
 	},
 
 });
 
 my $timeout = Glib::Timeout->add(100, sub {
-	if ($lastcontact < (time-1)) {
-		die("We're an orphan?");
+	if ($lastcontact < (time-5)) {
+		BugOUT(0,"We're an orphan?");
 	}
 	return 1;
 });
