@@ -34,7 +34,7 @@ Depends:
  ${perl:Depends},
  ${misc:Depends},
  libarctica-browser-core-perl (= ${source:Version}),
- tinyproxy,
+ tinyproxy-bin | tinyproxy,
 Breaks: arctica-testbrowser,
 Replaces: arctica-testbrowser,
 Description: Arctica Web Browser
